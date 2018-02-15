@@ -30,7 +30,7 @@ github = oauth.remote_app(
 #Create and set a global variable for the name of you JSON file here.  The file will be created on Heroku, so you don't need to make it in GitHub
 
 @app.context_processor
-def inject_logged_in():
+def inject_logged_in(): 
     return {"logged_in":('github_token' in session)}
 
 @app.route('/')
