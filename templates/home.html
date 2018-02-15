@@ -6,12 +6,15 @@
   <h1>Forum</h1>
   <p>Description of your forum and user guidelines go here.</p>
   
-  <form action='/posted' method="post">
-    <textarea name="message" style="width:100%; height:100px;"></textarea>
-    <br>
-    <input type="submit" value="Post">
-  </form>
-  
+  {{ if logged_in }}
+    <form action='/posted' method="post">
+      <textarea name="message" style="width:100%; height:100px;"></textarea>
+      <br>
+      <input type="submit" value="Post">
+    </form>
+  {{ else }}
+    <p>You must be logged in to post on this forum</p>
+  {% endif %}
   {{ past_posts }}
 
 
