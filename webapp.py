@@ -28,6 +28,7 @@ github = oauth.remote_app(
 
 #use a JSON file to store the past posts.  A global list variable doesn't work when handling multiple requests coming in and being handled on different threads
 #Create and set a global variable for the name of you JSON file here.  The file will be created on Heroku, so you don't need to make it in GitHub
+posts = "posts.json"
 
 @app.context_processor
 def inject_logged_in(): 
@@ -40,7 +41,11 @@ def home():
 @app.route('/posted', methods=['POST'])
 def post():
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
-    #Every post should include the username of the poster and text of the post. 
+    #Every post should include the username of the poster and text of the post.
+    with open('posts.json') as posts_data
+        posts = json.load(posts_data)
+        posts['user'] = github.request_token_params
+        posts['message'] = request.args['message']
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
