@@ -48,7 +48,10 @@ def post():
         posts['message'] = request.args['message']
         
 def posts_to_html(file):
-    
+    with open('posts.json') as posts_data
+        posts = json.load(posts_data)
+        table = ''
+        
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
