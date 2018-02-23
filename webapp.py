@@ -36,9 +36,7 @@ def inject_logged_in():
 
 @app.route('/')
 def home():
-    with open('posts.json', 'r') as posts_data:
-        posts = json.load(posts_data)
-        return render_template('home.html', posts=posts_to_html(posts))
+    return render_template('home.html', posts=posts_to_html())
 
 @app.route('/posted', methods=['POST'])
 def post():
@@ -57,7 +55,7 @@ def post():
         print('Unable to load json data')
         print(e)
         
-def posts_to_html(file):
+def posts_to_html():
     table = Markup('<table ><tr><th>User</th><th>Post</th></tr>')
     try:
         with open('posts.json', 'r') as posts_data
