@@ -54,6 +54,7 @@ def post():
     except Exception as e:
         print('Unable to load json data')
         print(e)
+    return render_template('home.html', posts=posts_to_html())
         
 def posts_to_html():
     table = Markup('<table ><tr><th>User</th><th>Post</th></tr>')
