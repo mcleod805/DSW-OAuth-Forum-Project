@@ -51,7 +51,7 @@ def post():
             posts.append({"username":username, "message":message})
             posts_data.seek(0)
             posts_data.truncate()
-            json.dump(posts_data, posts)
+            json.dump(posts, posts_data)
     except Exception as e:
         print('Unable to load json data')
         print(e)
@@ -63,7 +63,7 @@ def posts_to_html():
             table = Markup('<table><tr><th>User</th><th>Post</th></tr>')
             posts = json.load(posts_data)
             for value in posts:
-                table += Markup('<tr><td>' + posts['user'] + '</td><td>' + posts['message'] + '</td></tr>')
+                table += Markup('<tr><td>' + posts['username'] + '</td><td>' + posts['message'] + '</td></tr>')
             table += Markup('</table>')
     except Exception as e:
         table = ''
