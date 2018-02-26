@@ -5,3 +5,11 @@ body {
 #content {
      margin-left: 20px;
 }
+
+table {
+     table-layout: fixed;
+}
+
+td {
+     word-wrap: break-word;
+}
