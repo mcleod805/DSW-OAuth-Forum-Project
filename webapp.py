@@ -49,10 +49,9 @@ def post():
         with open('posts.json', 'r+') as posts_data:
             posts = json.load(posts_data)
             posts.append({"username":username, "message":message})
-            blah = posts
             posts_data.seek(0)
             posts_data.truncate()
-            json.dump(blah, posts_data)
+            json.dump(posts_data, posts)
     except Exception as e:
         print('Unable to load json data')
         print(e)
