@@ -64,7 +64,7 @@ def posts_to_html():
             posts = json.load(posts_data)
             for value in posts:
                 table += Markup('<tr><td>' + posts['user'] + '</td><td>' + posts['message'] + '</td></tr>')
-            table += '</table>'
+            table += Markup('</table>')
     except Exception as e:
         table = ''
         print(e)
