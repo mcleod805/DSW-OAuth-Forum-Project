@@ -66,7 +66,7 @@ def posts_to_html():
                 table += Markup('<tr><td>' + posts['user'] + '</td><td>' + posts['message'] + '</td></tr>')
             table += '</table>'
     except Exception as e:
-        table = '<p>Unable to load json data</p>'
+        table = ''
         print(e)
     return table
 
