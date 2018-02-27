@@ -5,14 +5,3 @@ body {
 #content {
      margin-left: 20px;
 }
-
-table {
-     table-layout: fixed;
-     width: 400px;
-}
-
-td {
-     width: 80px;
-     white-space: pre-wrap;
-     word-wrap: break-word;
-}
