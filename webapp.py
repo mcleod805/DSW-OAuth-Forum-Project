@@ -60,7 +60,7 @@ def post():
 def posts_to_html():
     try:
         with open('posts.json', 'r') as posts_data:
-            table = Markup('<table class='table table-bordered'><tr><th>User</th><th>Post</th></tr>')
+            table = Markup("<table class='table table-bordered'><tr><th>User</th><th>Post</th></tr>")
             posts = json.load(posts_data)
             for value in posts:
                 table += Markup('<tr><td>' + value['username'] + '</td><td>' + value['message'] + '</td></tr>')
