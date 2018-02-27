@@ -12,5 +12,6 @@ table {
 
 td {
      width: 80%;
+     white-space: pre-wrap;
      word-wrap: break-word;
 }
