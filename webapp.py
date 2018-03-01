@@ -39,6 +39,10 @@ def inject_logged_in():
 def home():
     return render_template('home.html', posts=posts_to_html())
 
+@app.route('message')
+def render_message();
+    return render_template('message.html')
+
 @app.route('/posted', methods=['POST'])
 def post():
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
