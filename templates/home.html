@@ -5,17 +5,12 @@
 {% block content %}
   <h1>Forum</h1>
   <p>Post about all your deepest secrets. We like to judge people.</p>
-  
+  {{ posts }}
   {% if logged_in %}
-    <form action='/posted' method="post">
-      <textarea name="message" style="width:100%; height:100px;"></textarea>
-      <br>
-      <input type="submit" value="Post">
-    </form>
+    <a href="/message.html">
+      <button>Submit a Post</button>
+    </a>
   {% else %}
     <p>You must be logged in to post on this forum</p>
   {% endif %}
-  {{ posts }}
-
-
 {% endblock %}
