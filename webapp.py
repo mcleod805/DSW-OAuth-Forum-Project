@@ -63,25 +63,32 @@ def post():
     username = session['user_data']['login']
     message = request.form['message']
     try:
-        with open('posts.json', 'r+') as posts_data:
-            posts = json.load(posts_data)
-            posts.append({"username":username, "message":message})
-            posts_data.seek(0)
-            posts_data.truncate()
-            json.dump(posts, posts_data)
+        collection.insertOne(
+            {"username": username, "message"; message}
+        )
+        #with open('posts.json', 'r+') as posts_data:
+            #posts = json.load(posts_data)
+            #posts.append({"username":username, "message":message})
+            #posts_data.seek(0)
+            #posts_data.truncate()
+            #json.dump(posts, posts_data)
     except Exception as e:
-        print('Unable to load json data')
+        print('Unable to load database')
         print(e)
     return render_template('home.html', posts=posts_to_html())
         
 def posts_to_html():
     try:
-        with open('posts.json', 'r') as posts_data:
-            table = Markup("<table class='table table-bordered'><tr><th>User</th><th>Post</th></tr>")
-            posts = json.load(posts_data)
-            for value in posts:
-                table += Markup("<tr><td>" + value['username'] + "</td><td>" + value["message"] + "</td></tr>")
-            table += Markup("</table>")
+        table = Markup("<table class='table table-bordered'><tr><th>User</th><th>Post</th></tr>")
+        for post in collection.find():
+            table += Markup("<tr><td>" + post["username"] + "</td><td>" + post["message"] + "</td></tr>")
+        table += Markup("</table>")
+        #with open('posts.json', 'r') as posts_data:
+            #table = Markup("<table class='table table-bordered'><tr><th>User</th><th>Post</th></tr>")
+            #posts = json.load(posts_data)
+            #for value in posts:
+                #table += Markup("<tr><td>" + value['username'] + "</td><td>" + value["message"] + "</td></tr>")
+            #table += Markup("</table>")
     except Exception as e:
         table = ''
         print(e)
