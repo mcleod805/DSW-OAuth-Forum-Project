@@ -2,9 +2,22 @@ from flask import Flask, redirect, url_for, session, request, jsonify, Markup
 from flask_oauthlib.client import OAuth
 from flask import render_template
 
+import pymongo
 import pprint
 import os
 import json
+import sys
+
+url = 'mongodb://{}:{}@{}:{}/{}'.format(
+    os.environ["MONGO_USERNAME"],
+    os.environ["MONGO_PASSWORD"],
+    os.environ["MONGO_HOST"],
+    os.environ["MONGO_PORT"],
+    os.environ["MONGO_DBNAME"])
+
+client = pymongo.MongoClient(url)
+db = client[os.environ["MONGO_DBNAME"]
+collection = db['<collection name>']
 
 os.system("echo '[]'>" + 'posts.json')
 
