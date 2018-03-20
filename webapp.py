@@ -19,7 +19,7 @@ client = pymongo.MongoClient(url)
 db = client[os.environ["MONGO_DBNAME"]
 collection = db['<collection name>']
 
-os.system("echo '[]'>" + 'posts.json')
+#os.system("echo '[]'>" + 'posts.json')
 
 app = Flask(__name__)
 
