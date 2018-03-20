@@ -16,7 +16,7 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
     os.environ["MONGO_DBNAME"])
 
 client = pymongo.MongoClient(url)
-db = client[os.environ["MONGO_DBNAME"]]
+db = client[os.environ["MONGO_NAME"]]
 collection = db['posts']
 
 #os.system("echo '[]'>" + 'posts.json')
@@ -64,7 +64,7 @@ def post():
     message = request.form['message']
     try:
         collection.insertOne(
-            {"username": username, "message": message}
+            {'user': username, 'post': message}
         )
         #with open('posts.json', 'r+') as posts_data:
             #posts = json.load(posts_data)
@@ -81,7 +81,7 @@ def posts_to_html():
     try:
         table = Markup("<table class='table table-bordered'><tr><th>User</th><th>Post</th></tr>")
         for post in collection.find():
-            table += Markup("<tr><td>" + post["username"] + "</td><td>" + post["message"] + "</td></tr>")
+            table += Markup("<tr><td>" + post['user'] + "</td><td>" + post['post'] + "</td></tr>")
         table += Markup("</table>")
         #with open('posts.json', 'r') as posts_data:
             #table = Markup("<table class='table table-bordered'><tr><th>User</th><th>Post</th></tr>")
