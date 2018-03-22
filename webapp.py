@@ -19,8 +19,6 @@ client = pymongo.MongoClient(url)
 db = client[os.environ["MONGO_NAME"]]
 collection = db['posts']
 
-os.system("echo '[]'>" + 'posts.json')
-
 app = Flask(__name__)
 
 app.debug = True #Change this to False for production
@@ -92,7 +90,7 @@ def posts_to_html():
     except Exception as e:
         table = ''
         print(e)
-    return table
+    return Markup('<p>Testtesttesttesttesttesttest</p>')#table
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
