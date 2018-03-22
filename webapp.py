@@ -91,7 +91,7 @@ def posts_to_html():
     except Exception as e:
         table = ''
         print(e)
-    return Markup('<p>Testtesttesttesttesttesttest</p>')#table
+    return table
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
