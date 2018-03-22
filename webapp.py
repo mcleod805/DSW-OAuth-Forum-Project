@@ -13,7 +13,8 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
     os.environ["MONGO_PASSWORD"],
     os.environ["MONGO_HOST"],
     os.environ["MONGO_PORT"],
-    os.environ["MONGO_DBNAME"])
+    os.environ["MONGO_NAME"])
+pprint.pprint(url)
 
 client = pymongo.MongoClient(url)
 db = client[os.environ["MONGO_NAME"]]
