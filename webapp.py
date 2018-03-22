@@ -53,7 +53,7 @@ def home():
     return render_template('home.html', posts=posts_to_html())
 
 @app.route('message')
-def render_message();
+def render_message():
     return render_template('message.html')
 
 @app.route('/posted', methods=['POST'])
