@@ -14,7 +14,6 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
     os.environ["MONGO_HOST"],
     os.environ["MONGO_PORT"],
     os.environ["MONGO_NAME"])
-pprint.pprint(url)
 
 client = pymongo.MongoClient(url)
 db = client[os.environ["MONGO_NAME"]]
@@ -64,7 +63,7 @@ def post():
     username = session['user_data']['login']
     message = request.form['message']
     try:
-        collection.insertOne(
+        collection.insert(
             {'user': username, 'post': message}
         )
         #with open('posts.json', 'r+') as posts_data:
