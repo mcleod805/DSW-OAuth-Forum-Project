@@ -89,7 +89,7 @@ def posts_to_html():
                 #table += Markup("<tr><td>" + value['username'] + "</td><td>" + value["message"] + "</td></tr>")
             #table += Markup("</table>")
     except Exception as e:
-        table = ''
+        table = Markup('<p>There was an error loading the table data</p>')
         print(e)
     return table
 
