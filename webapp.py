@@ -75,7 +75,7 @@ def posts_to_html():
         for value in collection.find():
             pprint.pprint(value)
             table += Markup("<tr><td>" + value["user"] + "</td><td>" + value["post"] + "</td>")
-            table += Markup("<td><td><form action="/delete" method="post"><button type="submit" name="delete" value="' + str(document.get('_id')) + '">Delete</button></form></td></tr>")
+            table += Markup("<td><form action="/delete" method="post"><button type="submit" name="delete" value="' + str(document.get('_id')) + '">Delete</button></form></td></tr>")
 
         table += Markup("</table>")
     except Exception as e:
