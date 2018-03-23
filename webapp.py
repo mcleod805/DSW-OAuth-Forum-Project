@@ -75,13 +75,20 @@ def posts_to_html():
         for value in collection.find():
             pprint.pprint(value)
             table += Markup("<tr><td>" + value["user"] + "</td><td>" + value["post"] + "</td>")
-            table += Markup("<td><form action = "/delete" method = "post"><button type="submit" name="delete" value="docid">Delete</button></form></td></tr>")
+            table += Markup("<td><form action = "/delete" method = "post"><button type="submit" name="delete" value="' + str(document.get('_id'))+ '">Delete</button></form></td></tr>")
 
         table += Markup("</table>")
     except Exception as e:
         table = Markup('<p>There was an error loading the table data</p>')
         print(e)
     return table
+
+@app.route('/delete', methods=['POST'])
+def delete():
+    #delete posts
+    global collection
+    collection.delete_one({"_id" : ObjectId(str(request.form['delete']))})
+    return render_template('home.html', past_posts=posts_to_html())
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
