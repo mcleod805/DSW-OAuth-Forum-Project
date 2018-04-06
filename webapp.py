@@ -73,7 +73,7 @@ def posts_to_html():
     try:
         table = Markup("<table class='table table-bordered'><tr><th>User</th><th>Post</th><th>Delete</th></tr>")
         for value in collection.find():
-            table += Markup("<tr><td>" + value["user"] + "</td><td>" + value["msg"] + "</td><td><form action='/delete' method='POST'><button type='submit' name='delete' value='value["_id"]'>Delete</button></form></td></tr>")
+            table += Markup("<tr><td>" + value["user"] + "</td><td>" + value["msg"] + "</td><td><form action='/delete' method='POST'><button type='submit' name='delete' value='' 'value["_id"] + ''>Delete</button></form></td></tr>")
         table += Markup("</table>")
     except Exception as e:
         table = Markup('<p>There was an error loading the table data</p>')
