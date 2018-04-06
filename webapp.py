@@ -112,7 +112,7 @@ def authorized():
             session.clear()
             print(inst)
             message='Unable to login, please try again.  '
-    return render_template('message.html', message=message)
+    return render_template('home.html', message=message)
 
 #the tokengetter is automatically called to check who is logged in.
 @github.tokengetter
