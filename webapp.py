@@ -71,7 +71,7 @@ def post():
         
 def posts_to_html():
     try:
-        table = Markup("<table class='table table-bordered'><tr><th>User</th><th>Post</th></tr>")
+        table = Markup("<table class='table table-bordered'><tr><th>User</th><th>Post</th><th>Delete</th></tr>")
         for value in collection.find():
             table += Markup("<tr><td>" + value["user"] + "</td><td>" + value["msg"] + "</td><td><form action='/delete' method='POST'><button type='submit' name='delete' value='str(value.get('_id'))'>Delete</button></form></td></tr>")
         table += Markup("</table>")
