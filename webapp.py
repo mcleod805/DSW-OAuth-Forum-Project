@@ -62,7 +62,7 @@ def post():
     message = request.form['message']
     try:
         collection.insert(
-            {"user": username, "post": message}
+            {"user": username, "msg": message}
         )
     except Exception as e:
         print('Unable to load database')
@@ -73,8 +73,7 @@ def posts_to_html():
     try:
         table = Markup("<table class='table table-bordered'><tr><th>User</th><th>Post</th></tr>")
         for value in collection.find():
-            pprint.pprint(value)
-            table += Markup("<tr><td>" + value["user"] + "</td><td>" + value["post"] + "</td><td><form action="/delete" method="POST"><button type="submit" name="delete" value="str(value.get('_id'))">Delete</button></form></td></tr>")
+            table += Markup("<tr><td>" + value["user"] + "</td><td>" + value["msg"] + "</td><td><form action='/delete' method='POST'><button type='submit' name='delete' value='str(value.get('_id'))'>Delete</button></form></td></tr>")
         table += Markup("</table>")
     except Exception as e:
         table = Markup('<p>There was an error loading the table data</p>')
