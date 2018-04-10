@@ -85,7 +85,7 @@ def delete():
     #delete posts
     global collection
     collection.delete_one({"_id" : ObjectId(str(request.form['delete']))})
-    return render_template('home.html', past_posts=posts_to_html())
+    return render_template('home.html', posts=posts_to_html())
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
@@ -112,7 +112,7 @@ def authorized():
             session.clear()
             print(inst)
             message='Unable to login, please try again.  '
-    return render_template('home.html', message=message)
+    return render_template('home.html', posts=posts_to_html)
 
 #the tokengetter is automatically called to check who is logged in.
 @github.tokengetter
